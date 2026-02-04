@@ -1,18 +1,64 @@
-## Getting Started
+# ContaBanco
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Projeto simples em Java que simula a criação de uma conta bancária via terminal, solicitando dados do usuário e exibindo uma mensagem de confirmação.
 
-## Folder Structure
+## Descrição
 
-The workspace contains two folders by default, where:
+A aplicação coleta as seguintes informações pelo terminal:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Número da conta
+- Código da agência
+- Nome completo do cliente
+- Saldo inicial
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Após a entrada dos dados, o sistema exibe uma mensagem informando que a conta foi criada com sucesso e que o saldo já está disponível para saque.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Projeto com foco educacional, indicado para iniciantes em Java.
 
-## Dependency Management
+## Tecnologias Utilizadas
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Java (JDK 8 ou superior)
+- Scanner
+- BigDecimal
+- Locale.US
+
+
+
+
+## Código Fonte
+
+```java
+import java.math.BigDecimal;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class ContaTerminal {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+
+        System.out.println("Por favor, digite o número da sua conta");
+        int Numero = scanner.nextInt();
+
+        System.out.println("Por favor, digite o código da agência");
+        String Agencia = scanner.next();
+
+        System.out.println("Por favor, digite o seu Nome Completo");
+        scanner.nextLine(); // limpa o buffer
+        String NomeCliente = scanner.nextLine();
+
+        System.out.println("Por favor, digite o saldo da Conta");
+        BigDecimal Saldo = scanner.nextBigDecimal();
+
+        System.out.println(
+            "Olá " + NomeCliente + ", obrigado por criar uma conta em nosso banco, sua agência é "
+            + Agencia + ", conta " + Numero + " e seu saldo " + Saldo + " já está disponível para saque."
+        );
+    }
+}
+``` 
+# Licença
+
+Projeto livre para fins educacionais.
+
